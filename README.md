@@ -96,3 +96,161 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+# Backend APIs
+
+## Postman Collection for API Endpoints
+
+This Postman collection covers all available endpoints for the API. Below are the details for each endpoint:
+
+## 1. Register User (Public)
+**Endpoint:**
+```
+POST http://localhost:3000/auth/register
+```
+**Headers:**
+```
+Content-Type: application/json
+```
+**Request Body:**
+```json
+{
+  "username": "johndoe",
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+## 2. Login User (Public)
+**Endpoint:**
+```
+POST http://localhost:3000/auth/login
+```
+**Headers:**
+```
+Content-Type: application/json
+```
+**Request Body:**
+```json
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+Save the `access_token` from the response for authenticated requests.
+
+## 3. Get All Books (Public)
+**Endpoint:**
+```
+GET http://localhost:3000/books
+```
+**Headers:**
+```
+Content-Type: application/json
+```
+
+## 4. Get Single Book (Public)
+**Endpoint:**
+```
+GET http://localhost:3000/books/:id
+```
+**Headers:**
+```
+Content-Type: application/json
+```
+
+Replace `:id` with an actual book ID.
+
+## 5. Create Book (Private)
+**Endpoint:**
+```
+POST http://localhost:3000/books
+```
+**Headers:**
+```
+Content-Type: application/json
+Authorization: Bearer <access_token>
+```
+**Request Body:**
+```json
+{
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "genre": "Fiction",
+  "publicationYear": 1925
+}
+```
+
+## 6. Update Book (Private)
+**Endpoint:**
+```
+PUT http://localhost:3000/books/:id
+```
+**Headers:**
+```
+Content-Type: application/json
+Authorization: Bearer <access_token>
+```
+**Request Body:**
+```json
+{
+  "title": "The Great Gatsby (Updated)",
+  "author": "F. Scott Fitzgerald",
+  "genre": "Fiction",
+  "publicationYear": 1925
+}
+```
+
+Replace `:id` with an actual book ID.
+
+## 7. Delete Book (Private)
+**Endpoint:**
+```
+DELETE http://localhost:3000/books/:id
+```
+**Headers:**
+```
+Content-Type: application/json
+Authorization: Bearer <access_token>
+```
+
+Replace `:id` with an actual book ID.
+
+---
+
+## Notes
+
+For all private endpoints (Create, Update, Delete), you need to:
+
+- Include the `Authorization` header with the Bearer token obtained from login.
+  Example: `Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`
+
+The response format for successful requests will typically be:
+
+- **Register/Login**: 
+```json
+{ "access_token": "jwt.token.here" }
+```
+- **Get All Books**: Array of book objects
+- **Get Single Book/Create/Update**: Single book object
+- **Delete**: Deleted book object
+
+Error responses will follow NestJS standard format:
+
+```json
+{
+  "statusCode": 401,
+  "message": "Unauthorized"
+}
+```
+
+---
+
+## Prerequisites
+
+- Make sure your MongoDB server is running.
+- Ensure the `DATABASE_URL` in the `.env` file is correctly configured before testing these endpoints.
+
+The bcrypt error should be resolved after installing the required packages.

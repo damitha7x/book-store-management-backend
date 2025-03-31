@@ -97,7 +97,6 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
-
 # Backend APIs
 
 ## Postman Collection for API Endpoints
@@ -105,15 +104,21 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 This Postman collection covers all available endpoints for the API. Below are the details for each endpoint:
 
 ## 1. Register User (Public)
+
 **Endpoint:**
+
 ```
 POST http://localhost:3000/auth/register
 ```
+
 **Headers:**
+
 ```
 Content-Type: application/json
 ```
+
 **Request Body:**
+
 ```json
 {
   "username": "johndoe",
@@ -123,15 +128,21 @@ Content-Type: application/json
 ```
 
 ## 2. Login User (Public)
+
 **Endpoint:**
+
 ```
 POST http://localhost:3000/auth/login
 ```
+
 **Headers:**
+
 ```
 Content-Type: application/json
 ```
+
 **Request Body:**
+
 ```json
 {
   "email": "john@example.com",
@@ -142,21 +153,29 @@ Content-Type: application/json
 Save the `access_token` from the response for authenticated requests.
 
 ## 3. Get All Books (Public)
+
 **Endpoint:**
+
 ```
 GET http://localhost:3000/books
 ```
+
 **Headers:**
+
 ```
 Content-Type: application/json
 ```
 
 ## 4. Get Single Book (Public)
+
 **Endpoint:**
+
 ```
 GET http://localhost:3000/books/:id
 ```
+
 **Headers:**
+
 ```
 Content-Type: application/json
 ```
@@ -164,16 +183,22 @@ Content-Type: application/json
 Replace `:id` with an actual book ID.
 
 ## 5. Create Book (Private)
+
 **Endpoint:**
+
 ```
 POST http://localhost:3000/books
 ```
+
 **Headers:**
+
 ```
 Content-Type: application/json
 Authorization: Bearer <access_token>
 ```
+
 **Request Body:**
+
 ```json
 {
   "title": "The Great Gatsby",
@@ -184,16 +209,22 @@ Authorization: Bearer <access_token>
 ```
 
 ## 6. Update Book (Private)
+
 **Endpoint:**
+
 ```
 PUT http://localhost:3000/books/:id
 ```
+
 **Headers:**
+
 ```
 Content-Type: application/json
 Authorization: Bearer <access_token>
 ```
+
 **Request Body:**
+
 ```json
 {
   "title": "The Great Gatsby (Updated)",
@@ -206,11 +237,15 @@ Authorization: Bearer <access_token>
 Replace `:id` with an actual book ID.
 
 ## 7. Delete Book (Private)
+
 **Endpoint:**
+
 ```
 DELETE http://localhost:3000/books/:id
 ```
+
 **Headers:**
+
 ```
 Content-Type: application/json
 Authorization: Bearer <access_token>
@@ -229,10 +264,12 @@ For all private endpoints (Create, Update, Delete), you need to:
 
 The response format for successful requests will typically be:
 
-- **Register/Login**: 
+- **Register/Login**:
+
 ```json
 { "access_token": "jwt.token.here" }
 ```
+
 - **Get All Books**: Array of book objects
 - **Get Single Book/Create/Update**: Single book object
 - **Delete**: Deleted book object

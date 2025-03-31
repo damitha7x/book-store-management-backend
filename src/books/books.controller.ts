@@ -1,5 +1,14 @@
 // src/books/books.controller.ts
-import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Body,
+  Param,
+  UseGuards,
+} from '@nestjs/common';
 import { BooksService } from './books.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
@@ -9,7 +18,15 @@ export class BooksController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
-  create(@Body() body: { title: string; author: string; genre: string; publicationYear: number }) {
+  create(
+    @Body()
+    body: {
+      title: string;
+      author: string;
+      genre: string;
+      publicationYear: number;
+    },
+  ) {
     return this.booksService.create(body);
   }
 

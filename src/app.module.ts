@@ -7,10 +7,7 @@ import { BooksModule } from './books/books.module';
 import { PrismaService } from './prisma.service';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
-    AuthModule,
-    BooksModule,],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), AuthModule, BooksModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
